@@ -9,10 +9,10 @@ def run_netqasm_simulate(n_times):
 
     :param n_times: The number of times to run the simulation.
     """
-
+    fid = 0.65
     # Create a unique HDF5 file name using the current timestamp
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"data_{timestamp}.txt"
+    filename = f"EPL_depol_065_{timestamp}.txt"
     results_file_path = os.path.join("data", filename)
 
     # Create and initialize the file
@@ -21,6 +21,11 @@ def run_netqasm_simulate(n_times):
 
     with open("filename.txt", "w") as f:
         f.write(filename)
+
+    results_file_path = os.path.join("data", filename)
+    # Write the result to a text file
+    with open(results_file_path, "a") as f:
+        f.write(f"{fid}\n")
 
     for i in range(n_times):
         print(f"Running simulation iteration {i + 1}...")
@@ -41,6 +46,6 @@ def run_netqasm_simulate(n_times):
 
 
 if __name__ == "__main__":
-    n_times = 5  # Change to how many times you want to run the simulation
+    n_times = 100  # Change to how many times you want to run the simulation
     run_netqasm_simulate(n_times)
 

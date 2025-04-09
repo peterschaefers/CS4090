@@ -18,22 +18,8 @@ def three_to_one_protocol_alice(q1, q2, q3, alice, socket):
     outcome1, outcome2 = three_to_one_gates_and_measurement_alice(q1, q2, q3)
     alice.flush()
 
-    outcome1 = int(outcome1)
-    outcome1 = str(outcome1)
-
-    outcome2 = int(outcome2)
-    outcome2 = str(outcome2)
-
-    a = outcome1 + outcome2
-
-    socket.send(a)
-    b = socket.recv()
-
-    if a == b:
-        return True
-
-    else:
-        return False
+    # Write below the code to send measurement result to Bob, receive measurement result from Bob and check if protocol was successful
+    pass
 
 
 def three_to_one_gates_and_measurement_alice(q1, q2, q3):
@@ -44,18 +30,9 @@ def three_to_one_gates_and_measurement_alice(q1, q2, q3):
     :param q3: Alice's qubit from the third entangled pair
     :return: A pair of integer 0/1 indicating Alice's measurement outcomes from measuring the qubits
     """
+    pass
 
-    q3.cnot(q2)
-    q1.cnot(q3)
 
-    #We need to measure q1 and q2 in the bell basis, so we apply cnot + H
-    q1.cnot(q2)
-    q1.H()
-
-    m1 = q1.measure()
-    m2 = q2.measure()
-
-    return m1, m2
 def three_to_one_protocol_bob(q1, q2, q3, bob, socket):
     """
     Implements Bob's side of the 3->1 distillation protocol.
@@ -70,26 +47,11 @@ def three_to_one_protocol_bob(q1, q2, q3, bob, socket):
     :param socket: Alice's classical communication socket to Bob
     :return: True/False indicating if protocol was successful
     """
-
-    outcome1, outcome2 = three_to_one_gates_and_measurement_bob(q1, q2, q3)
+    outcome1, outcome2 = three_to_one_gates_and_measurement_bob(q1, q2)
     bob.flush()
 
-    outcome1 = int(outcome1)
-    outcome1 = str(outcome1)
-
-    outcome2 = int(outcome2)
-    outcome2 = str(outcome2)
-
-    b = outcome1 + outcome2
-
-    socket.send(b)
-    a = socket.recv()
-
-    if b == a:
-        return True
-
-    else:
-        return False
+    # Write below the code to send measurement result to Alice, receive measurement results from Alice and check if protocol was successful
+    pass
 
 def three_to_one_gates_and_measurement_bob(q1, q2):
     """
@@ -99,15 +61,5 @@ def three_to_one_gates_and_measurement_bob(q1, q2):
     :param q3: Bob's qubit from the third entangled pair
     :return: A pair of integer 0/1 indicating Bob's measurement outcomes from measuring the qubits
     """
-    q3.cnot(q2)
-    q1.cnot(q3)
-
-    # We need to measure q1 and q2 in the bell basis, so we apply cnot + H
-    q1.cnot(q2)
-    q1.H()
-
-    m1 = q1.measure()
-    m2 = q2.measure()
-
-    return m1, m2
+    pass
 

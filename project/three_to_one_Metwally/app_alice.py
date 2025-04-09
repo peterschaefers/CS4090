@@ -22,9 +22,8 @@ def main(app_config=None):
         # print("Now running with Alice")
         epr1 = epr_socket.create()[0]
         epr2 = epr_socket.create()[0]
-        epr3 = epr_socket.create()[0]
 
-        result = three_to_one_protocol_alice(epr1, epr2, epr3, alice, socket)
+        result = epl_protocol_alice(epr1, epr2, alice, socket)
         # print("Alice received result")
 
 if __name__ == "__main__":
