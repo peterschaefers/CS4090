@@ -1,0 +1,118 @@
+(venv) cs4090@cs4090-vm:~/CS4090/project/epl$ netqasm simulate
+Running something
+Traceback (most recent call last):
+  File "/home/cs4090/CS4090/venv/bin/netqasm", line 33, in <module>
+    sys.exit(load_entry_point('netqasm', 'console_scripts', 'netqasm')())
+  File "/home/cs4090/CS4090/venv/lib/python3.10/site-packages/click/core.py", line 829, in __call__
+socket created alice
+    return self.main(*args, **kwargs)
+  File "/home/cs4090/CS4090/venv/lib/python3.10/site-packages/click/core.py", line 782, in main
+    rv = self.invoke(ctx)
+  File "/home/cs4090/CS4090/venv/lib/python3.10/site-packages/click/core.py", line 1259, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/home/cs4090/CS4090/venv/lib/python3.10/site-packages/click/core.py", line 1066, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/home/cs4090/CS4090/venv/lib/python3.10/site-packages/click/core.py", line 610, in invoke
+    return callback(*args, **kwargs)
+  File "/home/cs4090/CS4090/libs/netqasm/netqasm/runtime/cli.py", line 139, in simulate
+    setup_apps(
+  File "/home/cs4090/CS4090/libs/netqasm/netqasm/runtime/run.py", line 178, in setup_apps
+    run_applications(
+  File "/home/cs4090/CS4090/libs/squidasm/squidasm/run/run.py", line 101, in run_applications
+    results[name] = future.get()
+  File "/usr/lib/python3.10/multiprocessing/pool.py", line 774, in get
+    raise self._value
+  File "/usr/lib/python3.10/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "/home/cs4090/CS4090/project/epl/app_bob.py", line 16, in main
+    the_hague = NetQASMConnection(
+  File "/home/cs4090/CS4090/libs/squidasm/squidasm/sdk.py", line 40, in __init__
+    super().__init__(
+  File "/home/cs4090/CS4090/libs/netqasm/netqasm/sdk/connection.py", line 161, in __init__
+    self._setup_epr_sockets(epr_sockets=epr_sockets)
+  File "/home/cs4090/CS4090/libs/netqasm/netqasm/sdk/connection.py", line 323, in _setup_epr_sockets
+    epr_socket.conn = self
+  File "/home/cs4090/CS4090/libs/netqasm/netqasm/sdk/epr_socket.py", line 68, in conn
+    self._remote_node_id = self._get_node_id(app_name=self._remote_app_name)
+  File "/home/cs4090/CS4090/libs/netqasm/netqasm/sdk/epr_socket.py", line 20, in new_method
+    return method(self, *args, **kwargs)
+  File "/home/cs4090/CS4090/libs/netqasm/netqasm/sdk/epr_socket.py", line 299, in _get_node_id
+    return self._conn.network_info.get_node_id_for_app(app_name=app_name)
+  File "/home/cs4090/CS4090/libs/squidasm/squidasm/sdk.py", line 92, in get_node_id_for_app
+    return get_node_id_for_app(app_name=app_name)
+  File "/home/cs4090/CS4090/libs/squidasm/squidasm/backend/glob.py", line 45, in get_node_id_for_app
+    raise ValueError(f"No app with name {app_name} mapped to a node")
+ValueError: No app with name delft mapped to a node
+Exception ignored in atexit callback: <built-in function _cleanup_on_module_exit>
+Traceback (most recent call last):
+  File "pydynaa/core.pyx", line 1602, in pydynaa.core._cleanup_on_module_exit
+  File "pydynaa/core.pyx", line 1506, in pydynaa.core.SimulationEngine.reset
+RuntimeError: Simulation stopped before time.
+FATAL: exception not rethrown
+------------------------------------------------------------------------
+/home/cs4090/CS4090/venv/lib/python3.10/site-packages/cysignals/signals.cpython-310-x86_64-linux-gnu.so(+0x8938)[0x7947d024e938]
+/home/cs4090/CS4090/venv/lib/python3.10/site-packages/cysignals/signals.cpython-310-x86_64-linux-gnu.so(+0x89d9)[0x7947d024e9d9]
+/home/cs4090/CS4090/venv/lib/python3.10/site-packages/cysignals/signals.cpython-310-x86_64-linux-gnu.so(+0xbe1f)[0x7947d0251e1f]
+/lib/x86_64-linux-gnu/libc.so.6(+0x42520)[0x7947dbe42520]
+/lib/x86_64-linux-gnu/libc.so.6(pthread_kill+0x12c)[0x7947dbe969fc]
+/lib/x86_64-linux-gnu/libc.so.6(raise+0x16)[0x7947dbe42476]
+/lib/x86_64-linux-gnu/libc.so.6(abort+0xd3)[0x7947dbe287f3]
+/lib/x86_64-linux-gnu/libc.so.6(+0x893dc)[0x7947dbe893dc]
+/lib/x86_64-linux-gnu/libc.so.6(+0x896f0)[0x7947dbe896f0]
+/lib/x86_64-linux-gnu/libc.so.6(+0x9d3f6)[0x7947dbe9d3f6]
+/home/cs4090/CS4090/venv/lib/python3.10/site-packages/pydynaa/core.cpython-310-x86_64-linux-gnu.so(+0x20d0d)[0x7947db099d0d]
+/home/cs4090/CS4090/venv/lib/python3.10/site-packages/pydynaa/core.cpython-310-x86_64-linux-gnu.so(+0x2ab1a)[0x7947db0a3b1a]
+/home/cs4090/CS4090/venv/bin/python3(+0x15b8b7)[0x5bdee450b8b7]
+/home/cs4090/CS4090/venv/bin/python3(_PyEval_EvalFrameDefault+0x8ac)[0x5bdee44f345c]
+/home/cs4090/CS4090/venv/bin/python3(_PyFunction_Vectorcall+0x7c)[0x5bdee450a9fc]
+/home/cs4090/CS4090/venv/bin/python3(_PyEval_EvalFrameDefault+0x614a)[0x5bdee44f8cfa]
+/home/cs4090/CS4090/venv/bin/python3(_PyFunction_Vectorcall+0x7c)[0x5bdee450a9fc]
+/home/cs4090/CS4090/venv/bin/python3(_PyEval_EvalFrameDefault+0x8ac)[0x5bdee44f345c]
+/home/cs4090/CS4090/venv/bin/python3(_PyFunction_Vectorcall+0x7c)[0x5bdee450a9fc]
+/home/cs4090/CS4090/venv/bin/python3(_PyEval_EvalFrameDefault+0x2a27)[0x5bdee44f55d7]
+/home/cs4090/CS4090/venv/bin/python3(_PyFunction_Vectorcall+0x7c)[0x5bdee450a9fc]
+/home/cs4090/CS4090/venv/bin/python3(_PyEval_EvalFrameDefault+0x2a27)[0x5bdee44f55d7]
+/home/cs4090/CS4090/venv/bin/python3(_PyFunction_Vectorcall+0x7c)[0x5bdee450a9fc]
+/home/cs4090/CS4090/venv/bin/python3(_PyEval_EvalFrameDefault+0x8ac)[0x5bdee44f345c]
+/home/cs4090/CS4090/venv/bin/python3(_PyFunction_Vectorcall+0x7c)[0x5bdee450a9fc]
+/home/cs4090/CS4090/venv/bin/python3(_PyEval_EvalFrameDefault+0x8ac)[0x5bdee44f345c]
+/home/cs4090/CS4090/venv/bin/python3(+0x168a51)[0x5bdee4518a51]
+/home/cs4090/CS4090/venv/bin/python3(+0x291f3a)[0x5bdee4641f3a]
+/home/cs4090/CS4090/venv/bin/python3(+0x286ef8)[0x5bdee4636ef8]
+/lib/x86_64-linux-gnu/libc.so.6(+0x94ac3)[0x7947dbe94ac3]
+/lib/x86_64-linux-gnu/libc.so.6(+0x126850)[0x7947dbf26850]
+------------------------------------------------------------------------
+Exception ignored in garbage collection:
+RuntimeError: Unknown exception
+/home/cs4090/CS4090/venv/bin/cysignals-CSI:42: DeprecationWarning: The distutils package is deprecated and slated for removal in Python 3.12. Use setuptools or check PEP 632 for potential alternatives
+  from distutils.spawn import find_executable
+Attaching gdb to process id 3595.
+(venv) cs4090@cs4090-vm:~/CS4090/project/epl$ GNU gdb (Ubuntu 12.1-0ubuntu1~22.04) 12.1
+Copyright (C) 2022 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word".
+
+Stack backtrace
+---------------
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ptrace: No such process.
+No stack.
+Traceback (most recent call last):
+  File "<string>", line 25, in <module>
+ModuleNotFoundError: No module named 'Cython'
+Error while executing Python code.
+warning: Inferior ID 1 is not running.
+Saved trace to /home/cs4090/CS4090/project/epl/cysignals_crash_logs/crash_amja4u3n.log
+
+
