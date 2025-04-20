@@ -15,8 +15,14 @@ def three_to_one_protocol_alice(q1, q2, q3, alice, socket):
     :param socket: Alice's classical communication socket to Bob
     :return: True/False indicating if protocol was successful
     """
+
+    print("Running 321 protocol Alice")
     outcome1, outcome2 = three_to_one_gates_and_measurement_alice(q1, q2, q3)
+    print("Ran measurements alice")
     alice.flush()
+
+    print("Flushing")
+    print(outcome1)
 
     outcome1 = int(outcome1)
     outcome1 = str(outcome1)
@@ -70,8 +76,9 @@ def three_to_one_protocol_bob(q1, q2, q3, bob, socket):
     :param socket: Alice's classical communication socket to Bob
     :return: True/False indicating if protocol was successful
     """
-
+    print("Running 321 protocol bob")
     outcome1, outcome2 = three_to_one_gates_and_measurement_bob(q1, q2, q3)
+    print("Ran 321 gates bob")
     bob.flush()
 
     outcome1 = int(outcome1)
@@ -91,7 +98,7 @@ def three_to_one_protocol_bob(q1, q2, q3, bob, socket):
     else:
         return False
 
-def three_to_one_gates_and_measurement_bob(q1, q2):
+def three_to_one_gates_and_measurement_bob(q1, q2, q3):
     """
     Performs the gates and measurements for Bob's side of the 3->1 protocol
     :param q1: Bob's qubit from the first entangled pair

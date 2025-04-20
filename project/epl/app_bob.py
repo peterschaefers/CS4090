@@ -1,9 +1,23 @@
 from epl import epl_protocol_bob
 from netqasm.sdk import EPRSocket
 from netqasm.sdk.external import NetQASMConnection, Socket, get_qubit_state
-from netqasm.sdk.qubit import Qubit
-from netqasm.sdk.classical_communication.message import StructuredMessage
+# from netqasm.sdk.toolbox.sim_states import get_fidelity, to_dm
+# from netqasm.sdk.qubit import Qubit
+# from netqasm.sdk.classical_communication.message import StructuredMessage
 import os
+import numpy as np
+# import netsquid as ns
+from scipy.linalg import sqrtm
+
+
+def F(rho,sigma):
+    sqrt_rho = sqrtm(rho)
+    matrix_product = sqrt_rho @ sigma @ sqrt_rho
+    sqrt_matrix_product = sqrtm(matrix_product)
+
+    fidelity = np.real(np.trace(sqrt_matrix_product))**2
+
+    return fidelity
 
 def main(app_config=None):
 
@@ -28,21 +42,31 @@ def main(app_config=None):
         epr2 = epr_socket.recv()[0]
 
         result = epl_protocol_bob(epr1, epr2, bob, socket)
-        # print("Bob received result.")
+
+        dm_result = get_qubit_state(epr1, reduced_dm=False)
+
+        dm_target = np.zeros((4,4),dtype=np.complex)
+
+        dm_target[0,0] = 0.5
+        dm_target[0,3] = 0.5
+        dm_target[3,0] = 0.5
+        dm_target[3,3] = 0.5
+
+        fidelity = F(dm_target, dm_result)
+
 
         with open("filename.txt", "r") as f:
             filename_for_results = f.read().strip()  # Remove any extra whitespace or newline characters
             results_file_path = os.path.join("data", filename_for_results)
             # print(filename_for_results)
 
+
         # Write the result to a text file
         with open(results_file_path, "a") as f:
             if result:
-                print("An EPR Pair was successfully created with Alice!")
-                f.write("1\n")
-            else:
-                print("The protocol was not successful and no EPR Pair was created with Alice.")
-                f.write("0\n")
+                # print("An EPR Pair was successfully created with Alice!")
+                f.write(f"{fidelity}\n")
+
 
 if __name__ == "__main__":
     main()

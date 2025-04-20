@@ -6,7 +6,7 @@ def main(app_config=None):
 
     # Create a socket for classical communication
     socket = Socket("bob", "alice")
-    # print("socket created bob")
+    print("socket created bob")
 
     # Create a EPR socket for entanglement generation
     epr_socket = EPRSocket("alice")
