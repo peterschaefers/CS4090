@@ -19,8 +19,9 @@ def epl_protocol_alice(q1, q2, alice, socket):
 
     a = int(a)
     a = str(a)
+
     # Write below the code to send measurement result to Bob, receive measurement result from Bob and check if protocol was successful
-    socket.send(a) #Needs to be a string
+    socket.send(a)
     b = socket.recv()
 
     if (a+b) == "11":

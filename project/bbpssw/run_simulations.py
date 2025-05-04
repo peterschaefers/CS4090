@@ -58,8 +58,8 @@ def run_netqasm_simulate(n_max, n_succ):
         results_file_path = os.path.join("data", filename)
         # Write the result to a text file
         with open(results_file_path, "a") as f:
-            f.write(f"{fid}\n")
-            # f.write("1.0\n")
+            # f.write(f"{fid}\n")
+            f.write("1.0\n")
 
         i = 0
         while i < n_max:

@@ -18,7 +18,17 @@ def bbpssw_protocol_alice(q1, q2, alice, socket):
     alice.flush()
 
     # Write below the code to send measurement result to Bob, receive measurement result from Bob and check if protocol was successful
-    pass
+    a = int(a)
+    a = str(a)
+
+    socket.send(a)  # Needs to be a string
+    b = socket.recv()
+
+    if a == b:
+        return True
+
+    else:
+        return False
 
 
 def bbpssw_gates_and_measurement_alice(q1, q2):
@@ -28,7 +38,7 @@ def bbpssw_gates_and_measurement_alice(q1, q2):
     :param q2: Alice's qubit from the second entangled pair
     :return: Integer 0/1 indicating Alice's measurement outcome
     """
-    pass
+
 
 
 def bbpssw_protocol_bob(q1, q2, bob, socket):

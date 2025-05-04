@@ -1,8 +1,6 @@
 from epl import epl_protocol_alice
 from netqasm.sdk import EPRSocket
 from netqasm.sdk.external import NetQASMConnection, Socket
-from netqasm.sdk.qubit import Qubit
-from netqasm.sdk.classical_communication.message import StructuredMessage
 
 def main(app_config=None):
     # print("Running something")

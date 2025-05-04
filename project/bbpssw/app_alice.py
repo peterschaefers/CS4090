@@ -3,18 +3,25 @@ from netqasm.sdk import EPRSocket
 from netqasm.sdk.external import NetQASMConnection, Socket
 
 def main(app_config=None):
-
     # Create a socket for classical communication
-    pass
+    socket = Socket("alice", "bob")
+    # print("socket created alice")
 
     # Create a EPR socket for entanglement generation
-    pass
+    epr_socket = EPRSocket("bob")
 
     # Initialize Alice's NetQASM connection
-    pass
+    alice = NetQASMConnection(
+        app_name=app_config.app_name,
+        epr_sockets=[epr_socket]
+    )
 
-    # Create Alice's context, initialize EPR pairs inside it and call Alice's BBPSSW method. Finally, print out whether or not Alice successfully created an EPR Pair with Bob.
+    with alice:
+        # print("Now running with Alice")
+        epr1 = epr_socket.create()[0]
+        epr2 = epr_socket.create()[0]
 
+        result = bbpssw_protocol_alice(epr1, epr2, alice, socket)
 
 if __name__ == "__main__":
     main()
