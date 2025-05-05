@@ -17,8 +17,17 @@ def dejmps_protocol_alice(q1, q2, alice, socket):
     a = dejmps_gates_and_measurement_alice(q1, q2)
     alice.flush()
 
-    # Write below the code to send measurement result to Bob, receive measurement result from Bob and check if protocol was successful
-    pass
+    a = int(a)
+    a = str(a)
+
+    socket.send(a)
+    b = socket.recv()
+
+    if a == b:
+        return True
+
+    else:
+        return False
 
 
 def dejmps_gates_and_measurement_alice(q1, q2):
@@ -28,7 +37,16 @@ def dejmps_gates_and_measurement_alice(q1, q2):
     :param q2: Alice's qubit from the second entangled pair
     :return: Integer 0/1 indicating Alice's measurement outcome
     """
-    pass
+
+    q1.rot_X(angle=math.pi/2)
+    q2.rot_X(angle=math.pi/2)
+
+    q1.cnot(q2)
+
+    m = q2.measure()
+
+    return m
+
 
 
 def dejmps_protocol_bob(q1, q2, bob, socket):
@@ -47,8 +65,17 @@ def dejmps_protocol_bob(q1, q2, bob, socket):
     b = dejmps_gates_and_measurement_bob(q1, q2)
     bob.flush()
 
-    # Write below the code to send measurement result to Alice, receive measurement result from Alice and check if protocol was successful
-    pass
+    b = int(b)
+    b = str(b)
+
+    socket.send(b)
+    a = socket.recv()
+
+    if b == a:
+        return True
+
+    else:
+        return False
 
 def dejmps_gates_and_measurement_bob(q1, q2):
     """
@@ -57,4 +84,11 @@ def dejmps_gates_and_measurement_bob(q1, q2):
     :param q2: Bob's qubit from the second entangled pair
     :return: Integer 0/1 indicating Bob's measurement outcome
     """
-    pass
+    q1.rot_X(angle=-math.pi / 2)
+    q2.rot_X(angle=-math.pi / 2)
+
+    q1.cnot(q2)
+
+    m = q2.measure()
+
+    return m

@@ -11,9 +11,9 @@
   QID:
   - 0
   - 0
-  SIT: 6238.0
+  SIT: 748.0
   TYP: null
-  WCT: '2024-03-22 14:43:10.289886'
+  WCT: '2025-05-05 11:13:31.622149'
 - BAS: null
   INS: epr_EntanglementStage.FINISH
   LOG: entanglement of type 0 created between delft and the_hague
@@ -24,7 +24,7 @@
   PTH:
   - ch1
   QGR:
-    8368287012100:
+    8107250373324:
       is_entangled: true
       qubit_ids:
       - - alice
@@ -35,6 +35,62 @@
   QID:
   - 0
   - 0
-  SIT: 6239.0000000001
+  SIT: 749.0000000001
   TYP: epr_EntanglementType.CK
-  WCT: '2024-03-22 14:43:10.293188'
+  WCT: '2025-05-05 11:13:31.675666'
+- BAS: null
+  INS: epr_EntanglementStage.START
+  LOG: start entanglement creation between delft and the_hague
+  MSR: null
+  NOD:
+  - delft
+  - the_hague
+  PTH:
+  - ch1
+  QGR:
+    8107250373324:
+      is_entangled: true
+      qubit_ids:
+      - - alice
+        - 0
+      - - bob
+        - 0
+      state: null
+  QID:
+  - 1
+  - 1
+  SIT: 1748.0
+  TYP: null
+  WCT: '2025-05-05 11:13:31.680905'
+- BAS: null
+  INS: epr_EntanglementStage.FINISH
+  LOG: entanglement of type 0 created between delft and the_hague
+  MSR: null
+  NOD:
+  - delft
+  - the_hague
+  PTH:
+  - ch1
+  QGR:
+    8107250373324:
+      is_entangled: true
+      qubit_ids:
+      - - alice
+        - 0
+      - - bob
+        - 0
+      state: null
+    8107250380604:
+      is_entangled: true
+      qubit_ids:
+      - - alice
+        - 1
+      - - bob
+        - 1
+      state: null
+  QID:
+  - 1
+  - 1
+  SIT: 1749.0000000001
+  TYP: epr_EntanglementType.CK
+  WCT: '2025-05-05 11:13:31.688380'

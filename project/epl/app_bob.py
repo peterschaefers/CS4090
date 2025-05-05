@@ -1,12 +1,8 @@
 from epl import epl_protocol_bob
 from netqasm.sdk import EPRSocket
 from netqasm.sdk.external import NetQASMConnection, Socket, get_qubit_state
-# from netqasm.sdk.toolbox.sim_states import get_fidelity, to_dm
-# from netqasm.sdk.qubit import Qubit
-# from netqasm.sdk.classical_communication.message import StructuredMessage
 import os
 import numpy as np
-# import netsquid as ns
 from scipy.linalg import sqrtm
 
 
