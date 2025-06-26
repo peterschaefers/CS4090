@@ -43,12 +43,12 @@ def run_netqasm_simulate(n_max, n_succ):
         if fid > 1.0:
             fid = 1.0
 
-        update_all_link_fidelities("network.yaml", float(fid))
+        update_all_nodes_gate_fidelity("network.yaml", float(fid))
 
 
         #Create a unique file name to store the data
         title_fid = titles[arg]
-        filename = f"dejmps_depol_{title_fid}.txt"
+        filename = f"dejmps_gate_{title_fid}.txt"
         results_file_path = os.path.join("data", filename)
 
         # Create and initialize the file
